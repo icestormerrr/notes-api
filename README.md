@@ -15,6 +15,7 @@
 
 
 Теоретическое введение:
+
 REST API — это архитектурный стиль для построения веб-сервисов, где все данные представлены как ресурсы с уникальными URI, а взаимодействие с ними осуществляется стандартными HTTP-методами: GET для чтения, POST для создания, PUT/PATCH для обновления и DELETE для удаления, при этом сервер не хранит состояние между запросами. CRUD (Create, Read, Update, Delete) описывает базовые операции над ресурсами, которые в REST реализуются через соответствующие HTTP-методы, позволяя клиенту создавать, получать, изменять и удалять данные структурированным и стандартизированным образом.
 
 
@@ -75,8 +76,8 @@ curl -Uri "http://localhost:8080/api/v1/notes" -Method POST -ContentType "applic
 - Параметры: нет
 
 Тест 1.1
-Параметры: —
-Ожидаемый результат: HTTP 200, JSON-массив из 5 заметок (ID 1–5)
+- Параметры: —
+- Ожидаемый результат: HTTP 200, JSON-массив из 5 заметок (ID 1–5)
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes" -Method GET
 ```
@@ -91,8 +92,8 @@ curl -Uri "http://localhost:8080/api/v1/notes" -Method GET
 - Тело запроса: JSON {"title":"string","content":"string"}
 
 Тест 2.1
-Параметры: {"title":"Note 6","content":"Content 6"}
-Ожидаемый результат: HTTP 200, JSON {"id":6}
+- Параметры: {"title":"Note 6","content":"Content 6"}
+- Ожидаемый результат: HTTP 200, JSON {"id":6}
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes" -Method POST -Body '{"title":"Note 6","content":"Content 6"}' -ContentType "application/json"
 ```
@@ -102,8 +103,8 @@ curl -Uri "http://localhost:8080/api/v1/notes" -Method POST -Body '{"title":"Not
 
 
 Тест 2.2
-Параметры: {"title":"","content":"No title"}
-Ожидаемый результат: HTTP 400, ошибка "title cannot be empty"
+- Параметры: {"title":"","content":"No title"}
+- Ожидаемый результат: HTTP 400, ошибка "title cannot be empty"
 
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes" -Method POST -Body '{"title":"","content":"No title"}' -ContentType "application/json"
@@ -118,8 +119,8 @@ curl -Uri "http://localhost:8080/api/v1/notes" -Method POST -Body '{"title":"","
 - Параметры: {id} — число
 
 Тест 3.1
-Параметры: ID = 1
-Ожидаемый результат: HTTP 200, JSON заметки с ID 1
+- Параметры: ID = 1
+- Ожидаемый результат: HTTP 200, JSON заметки с ID 1
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/1" -Method GET
 ```
@@ -128,8 +129,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/1" -Method GET
 ![alt text](screenshots/image-3.png)
 
 Тест 3.2
-Параметры: ID = 999
-Ожидаемый результат: HTTP 404, ошибка "note not found"
+- Параметры: ID = 999
+- Ожидаемый результат: HTTP 404, ошибка "note not found"
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/999" -Method GET
 ```
@@ -138,8 +139,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/999" -Method GET
 ![alt text](screenshots/image-4.png)
 
 Тест 3.3
-Параметры: ID = "abc"
-Ожидаемый результат: HTTP 400, ошибка "invalid note id"
+- Параметры: ID = "abc"
+- Ожидаемый результат: HTTP 400, ошибка "invalid note id"
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/abc" -Method GET
 ```
@@ -153,8 +154,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/abc" -Method GET
 - Тело запроса: JSON {"title":"string","content":"string"}
 
 Тест 4.1
-Параметры: ID = 1, {"title":"Updated Note 1"}
-Ожидаемый результат: HTTP 204, заголовок обновлён
+- Параметры: ID = 1, {"title":"Updated Note 1"}
+- Ожидаемый результат: HTTP 204, заголовок обновлён
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/1" -Method PATCH -Body '{"title":"Updated Note 1"}' -ContentType "application/json"
 ```
@@ -163,8 +164,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/1" -Method PATCH -Body '{"title":"
 ![alt text](screenshots/image-6.png)
 
 Тест 4.2
-Параметры: ID = 2, {"title":""}
-Ожидаемый результат: HTTP 400, ошибка "title cannot be empty"
+- Параметры: ID = 2, {"title":""}
+- Ожидаемый результат: HTTP 400, ошибка "title cannot be empty"
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/2" -Method PATCH -Body '{"title":""}' -ContentType "application/json"
 ```
@@ -174,8 +175,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/2" -Method PATCH -Body '{"title":"
 
 
 Тест 4.3
-Параметры: ID = 999, {"title":"New"}
-Ожидаемый результат: HTTP 404, ошибка "note not found"
+- Параметры: ID = 999, {"title":"New"}
+- Ожидаемый результат: HTTP 404, ошибка "note not found"
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/999" -Method PATCH -Body '{"title":"New"}' -ContentType "application/json"
 ```
@@ -185,8 +186,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/999" -Method PATCH -Body '{"title"
 
 
 Тест 4.4
-Параметры: ID = "abc", {"title":"New"}
-Ожидаемый результат: HTTP 400, ошибка "invalid note id"
+- Параметры: ID = "abc", {"title":"New"}
+- Ожидаемый результат: HTTP 400, ошибка "invalid note id"
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/abc" -Method PATCH -Body '{"title":"New"}' -ContentType "application/json"
 ```
@@ -201,8 +202,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/abc" -Method PATCH -Body '{"title"
 - Параметры: {id} — число
 
 Тест 5.1
-Параметры: ID = 1
-Ожидаемый результат: HTTP 204, заметка удалена
+- Параметры: ID = 1
+- Ожидаемый результат: HTTP 204, заметка удалена
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/1" -Method DELETE
 ```
@@ -212,8 +213,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/1" -Method DELETE
 
 
 Тест 5.2
-Параметры: ID = 999
-Ожидаемый результат: HTTP 404, ошибка "note not found"
+- Параметры: ID = 999
+- Ожидаемый результат: HTTP 404, ошибка "note not found"
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/999" -Method DELETE
 ```
@@ -223,8 +224,8 @@ curl -Uri "http://localhost:8080/api/v1/notes/999" -Method DELETE
 
 
 Тест 5.3
-Параметры: ID = "abc"
-Ожидаемый результат: HTTP 400, ошибка "invalid note id"
+- Параметры: ID = "abc"
+- Ожидаемый результат: HTTP 400, ошибка "invalid note id"
 ```bash
 curl -Uri "http://localhost:8080/api/v1/notes/abc" -Method DELETE
 ```
