@@ -11,6 +11,14 @@ import (
 	"github.com/icestormerrr/notes-api/internal/utils/config"
 )
 
+// Package main Notes API server.
+//
+// @title           Notes API
+// @version         1.0
+// @description     Учебный REST API для заметок
+// @contact.name    Backend Course
+// @contact.email   yurkin.v.i@edu.mirea.ru
+// @BasePath        /api/v1
 func main() {
 	cfg := config.Load()
 
