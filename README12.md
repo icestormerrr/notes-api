@@ -109,10 +109,10 @@ docker-compose up --build -d
 ```
 
 ## Пример документации swagger
-![alt text](image-13.png)
+![alt text](screenshots/image-13.png)
 
 # Пример документации redoc
-![alt text](image-14.png)
+![alt text](screenshots/image-14.png)
 
 ## Пример аннотаций над методами
 ```golang
